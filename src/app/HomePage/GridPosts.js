@@ -71,7 +71,7 @@ export default function GridPosts() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 flex-grow">
           {currentPosts.map((post, index) => (
             <div key={index + 1} className="bg-black p-4 rounded-lg border-2 border-gray-400 transition-transform transform hover:scale-105 hover:border-white">
-              <PostCard post={post}/>
+              <PostCard key={post.slug || post.id} post={post}/>
             </div>
           ))}
         </div>
