@@ -1,5 +1,7 @@
 import Image from 'next/image'; // Import next/image for optimized images
 import { FaComment  } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export function formatDate(dateString) {
     const date = new Date(dateString);
@@ -27,7 +29,34 @@ export function formatDate(dateString) {
 }
 
 export default function PostCard({post}){
+  const [commentCount, setCommentCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchCommentCount();
+  }, [post.id]);
+
+  async function fetchCommentCount() {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(`/api/comments?postId=${post.id}&countOnly=true`);
+      if (!response.ok) throw new Error('Failed to fetch comment count');
+      const data = await response.json();
+      setCommentCount(data.count);
+    } catch (error) {
+      console.error('Error fetching comment count:', error);
+      setError('Failed to load comment count');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  if (error) return <div>Error: {error}</div>;
+
     return (
+        <Link href={`/blog/?postId=${post.id}`}>
         <div className="flex items-start">
           <Image 
             src={post.image.url}
@@ -43,10 +72,11 @@ export default function PostCard({post}){
               <p className="text-sm text-gray-400">{formatDate(post.lastModified)}</p>
               <div className="flex items-center ml-4">
                 <FaComment size={16} className="text-gray-400" />
-                <span className="ml-1 text-gray-400">0</span>
+                <span className="ml-1 text-gray-400">{commentCount}</span>
               </div>
             </div>
           </div>
         </div>
+        </Link>
     );
 }
