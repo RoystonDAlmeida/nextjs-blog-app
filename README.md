@@ -33,7 +33,8 @@ To get started with BlogPostView locally, follow these steps:
    cd blogpostview
 
 2. Install dependencies
-    ```npm install
+    ```bash
+        npm install
 
 3. Installing Redis
     ```bash
@@ -41,12 +42,15 @@ To get started with BlogPostView locally, follow these steps:
 
 4. Set up environment variables
     Create a .envfile in the root directory and add the following details:-
-    ``` NEXT_PUBLIC_LINKEDIN_PROFIL_URL = <your_linkedin_url>
+    ``` bash
+        NEXT_PUBLIC_LINKEDIN_PROFIL_URL = <your_linkedin_url>
         NEXT_PUBLIC_GITHUB_PROFILE_URL = <your_github_url>
 
 5. Run the application:
-    ``` npm run dev
-    Your app will be running at http://localhost:3000.
+    ``` bash
+        npm run dev
+
+Your app will be running at http://localhost:3000.
 
 ## Usage
 
@@ -85,9 +89,9 @@ GitHub: https://github.com/RoystonDAlmeida/
 Thank you for checking out BlogPostView! We hope you enjoy using it as much as we enjoyed building it!
 
 
-### Instructions for Use
+## Instructions for Use
 
-1. Replace image paths with actual values relevant to your project.
+1. Replace image paths with actual values relevant to your project. If you want to add additional posts, modify or create them in `blog-posts` directory(which contains .MDX files).
 2. Add any additional sections or information that may be pertinent to your specific application or audience.
 
 This README provides a comprehensive overview of your blog application while engaging users effectively!
