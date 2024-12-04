@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+h1, .custom-h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    color: #FFF;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+h2, .custom-h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: #FFF;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+p, .custom-p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: #FFF;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
