@@ -5,6 +5,7 @@ import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
 import { useState } from 'react';
 import Link from 'next/link';
+import React from 'react';
 
 export default function SearchBar() {
     const searchParams = useSearchParams();
@@ -68,12 +69,12 @@ export default function SearchBar() {
             {searchResults.length > 0 ? (
                 <div className="absolute z-10 bg-black border rounded-lg shadow-lg mt-1 w-full max-w-md">
                     {searchResults.map(post => (
-                        <>
+                    <React.Fragment key={post.id}> {/* Unique key for each fragment */}
                         <div key={post.id} className="p-2 hover:bg-gray-700 cursor-pointer">
                             <Link href={`/blog?postId=${post.id}`}>{post.title}</Link>
                         </div>
                          <div className="h-0.5 bg-white rounded"></div>
-                        </>
+                    </React.Fragment>
                     ))}
                 </div>
             ) : (
